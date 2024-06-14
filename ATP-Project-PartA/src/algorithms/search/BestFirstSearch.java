@@ -17,8 +17,12 @@ public class BestFirstSearch extends BreadthFirstSearch {
         AState goalState = searchable.getGoalState();
         this.m = searchable;
 
-        queue.add(startState);
-        visited.add(startState);
+        if (startState != null) {
+            queue.add(startState);
+            visited.add(startState);
+        } else {
+            return null;
+        }
 
         while (!queue.isEmpty()) {
             AState currentState = queue.poll();

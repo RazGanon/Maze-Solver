@@ -16,8 +16,10 @@ public class SearchableMaze implements ISearchable {
         this.maze = maze;
         Position startPosition = maze.getStart();
         Position goalPosition = maze.getEnd();
-        this.startState = new MazeState(startPosition.getRowIndex(), startPosition.getColumnIndex());
-        this.goalState = new MazeState(goalPosition.getRowIndex(), goalPosition.getColumnIndex());
+        if (startPosition != null && goalPosition != null) {
+            this.startState = new MazeState(startPosition.getRowIndex(), startPosition.getColumnIndex());
+            this.goalState = new MazeState(goalPosition.getRowIndex(), goalPosition.getColumnIndex());
+        }
     }
 
     @Override

@@ -24,6 +24,8 @@ public class EmptyMazeGenerator extends AMazeGenerator {
                 mazeMat[i][j] = 0;
             }
         }
+        maze.setStart(new Position(0, 0)); // Start at top-left corner
+        maze.setEnd(new Position(rows - 1, cols - 1)); // End at bottom-right corner
 
         // Set the maze matrix
         maze.setMaze(mazeMat);
