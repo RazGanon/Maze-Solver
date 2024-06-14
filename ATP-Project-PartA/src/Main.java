@@ -28,4 +28,5 @@ public class Main {
         System.out.println("Time taken to generate My Maze: " + myMazeGenerator.measureAlgorithmTimeMillis(rows, cols) +"ms");
     }
 
+
 }
