@@ -23,5 +23,12 @@ public abstract class ASearchingAlgorithm implements ISearchingAlgorithm {
             currentState = currentState.getParentState();
         }
         Collections.reverse(solution.getSolutionPath());
-        return solution;
-    }}
+        return  solution;
+    }
+
+
+    private boolean checkSolution(Solution solution){
+        return solution != null;
+    }
+
+}

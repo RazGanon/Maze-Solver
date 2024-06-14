@@ -12,23 +12,23 @@ public class BestFirstSearch extends BreadthFirstSearch {
 
     @Override
     public Solution solve(ISearchable searchable) {
-        Set<MazeState> visited = new HashSet<>();
-        MazeState startState = searchable.getStartState();
-        MazeState goalState = searchable.getGoalState();
+        Set<AState> visited = new HashSet<>();
+        AState startState = searchable.getStartState();
+        AState goalState = searchable.getGoalState();
         this.m = searchable;
 
         queue.add(startState);
         visited.add(startState);
 
         while (!queue.isEmpty()) {
-            MazeState currentState = queue.poll();
+            AState currentState = queue.poll();
             numberOfNodesEvaluated++;
 
             if (currentState.equals(goalState)) {
                 return backtrack(currentState);
             }
 
-            for (MazeState neighbor : searchable.getAllPossibleStates(currentState)) {
+            for (AState neighbor : searchable.getAllPossibleStates(currentState)) {
                 if (!visited.contains(neighbor)) {
                     neighbor.setParentState(currentState);
                     queue.add(neighbor);
@@ -37,7 +37,7 @@ public class BestFirstSearch extends BreadthFirstSearch {
             }
         }
 
-        return null;
+        return new Solution();
     }
 
     @Override
@@ -45,10 +45,10 @@ public class BestFirstSearch extends BreadthFirstSearch {
         return "BestFirstSearch";
     }
 
-    private int calculateHeuristic(MazeState state) {
+    private int calculateHeuristic(AState state) {
         if (state instanceof MazeState) {
-            MazeState mazeState =  state;
-            MazeState goalState = this.getGoalState();
+            MazeState mazeState = (MazeState) state;
+            MazeState goalState = (MazeState) this.getGoalState();
             if (goalState instanceof MazeState) {
                 MazeState goalMazeState = goalState;
                 int rowDifference = Math.abs(mazeState.getRow() - goalMazeState.getRow());
@@ -60,6 +60,6 @@ public class BestFirstSearch extends BreadthFirstSearch {
         return 0;
     }
 
-    private MazeState getGoalState() {
+    private AState getGoalState() {
         return m.getGoalState();
     }}

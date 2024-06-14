@@ -9,7 +9,7 @@ public class MazeState extends AState {
     private int column;
 
     public MazeState(int row, int column) {
-        super("{" + row + "," + column + "}");
+        super("(" + row + "," + column + ")");
         this.row = row;
         this.column = column;
     }

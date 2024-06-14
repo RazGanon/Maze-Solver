@@ -1,11 +1,17 @@
 package algorithms.search;
 
-import java.util.List;
+
+import algorithms.maze3D.Maze3DState;
+
+import java.util.ArrayList;
+
 
 public interface ISearchable {
-    MazeState getStartState();
-    MazeState getGoalState();
-    List<MazeState> getAllPossibleStates(MazeState state);
+    AState getStartState();
+    AState getGoalState();
+    ArrayList<AState> getAllPossibleStates(AState state);
+
+
 }
 
 

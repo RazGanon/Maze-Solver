@@ -4,13 +4,13 @@ import algorithms.mazeGenerators.Maze;
 import algorithms.mazeGenerators.Position;
 
 import java.util.ArrayList;
-import java.util.List;
+
 
 // Define the SearchableMaze class
 public class SearchableMaze implements ISearchable {
-    private Maze maze;
-    private MazeState startState;
-    private MazeState goalState;
+    protected Maze maze;
+    protected MazeState startState;
+    protected MazeState goalState;
 
     public SearchableMaze(Maze maze) {
         this.maze = maze;
@@ -31,12 +31,12 @@ public class SearchableMaze implements ISearchable {
     }
 
     @Override
-    public ArrayList<MazeState> getAllPossibleStates(MazeState s) {
+    public ArrayList<AState> getAllPossibleStates(AState s) {
         MazeState mazeState = (MazeState) s;
         int row = mazeState.getRow();
         int column = mazeState.getColumn();
         int[][] mazeArray = maze.getMaze();
-        ArrayList<MazeState> possibleStates = new ArrayList<>();
+        ArrayList<AState> possibleStates = new ArrayList<>();
 
         int[] dx = {-1, 1, 0, 0};
         int[] dy = {0, 0, -1, 1};

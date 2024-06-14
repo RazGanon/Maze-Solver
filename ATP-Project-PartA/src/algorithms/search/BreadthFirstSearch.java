@@ -3,30 +3,27 @@ package algorithms.search;
 import java.util.*;
 
 public class BreadthFirstSearch extends ASearchingAlgorithm {
-    protected Queue<MazeState> queue;
-
-    public BreadthFirstSearch() {
-        this.queue = new LinkedList<>();
-    }
+    protected Queue<AState> queue = new LinkedList<>();
 
     @Override
     public Solution solve(ISearchable searchable) {
-        Set<MazeState> visited = new HashSet<>();
-        MazeState startState = searchable.getStartState();
-        MazeState goalState = searchable.getGoalState();
+        Set<AState> visited = new HashSet<>();
+        AState startState = searchable.getStartState();
+        AState goalState = searchable.getGoalState();
 
         queue.add(startState);
         visited.add(startState);
 
         while (!queue.isEmpty()) {
-            MazeState currentState = queue.poll();
+            AState currentState = queue.poll();
             numberOfNodesEvaluated++;
 
             if (currentState.equals(goalState)) {
-                return backtrack(currentState);
+                return backtrackToStart(currentState);
             }
 
-            for (MazeState neighbor : searchable.getAllPossibleStates(currentState)) {
+            List<AState> neighbors = searchable.getAllPossibleStates(currentState);
+            for (AState neighbor : neighbors) {
                 if (!visited.contains(neighbor)) {
                     neighbor.setParentState(currentState);
                     queue.add(neighbor);
@@ -34,11 +31,22 @@ public class BreadthFirstSearch extends ASearchingAlgorithm {
                 }
             }
         }
+        return new Solution(); // Return an empty solution if no path is found
+    }
 
-        return null;
+    private Solution backtrackToStart(AState goalState) {
+        Solution solution = new Solution();
+        AState current = goalState;
+        while (current != null) {
+            solution.addStateToSolutionPath(current);
+            current = current.getParentState();
+        }
+        Collections.reverse(solution.getSolutionPath()); // Ensure the path is from start to goal
+        return solution;
     }
 
     @Override
     public String getName() {
         return "BreadthFirstSearch";
-    }}
+    }
+}
