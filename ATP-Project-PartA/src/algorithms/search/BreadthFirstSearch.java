@@ -11,8 +11,12 @@ public class BreadthFirstSearch extends ASearchingAlgorithm {
         AState startState = searchable.getStartState();
         AState goalState = searchable.getGoalState();
 
-        queue.add(startState);
-        visited.add(startState);
+        if (startState != null) {
+            queue.add(startState);
+            visited.add(startState);
+        } else {
+            return null;
+        }
 
         while (!queue.isEmpty()) {
             AState currentState = queue.poll();

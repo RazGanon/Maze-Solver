@@ -11,8 +11,12 @@ public class DepthFirstSearch extends ASearchingAlgorithm {
         AState startState = searchable.getStartState();
         AState goalState = searchable.getGoalState();
 
-        stack.push(startState);
-        visited.add(startState);
+        if (startState != null) {
+            stack.add(startState);
+            visited.add(startState);
+        } else {
+            return null;
+        }
 
         while (!stack.isEmpty()) {
             AState currentState = stack.pop();
