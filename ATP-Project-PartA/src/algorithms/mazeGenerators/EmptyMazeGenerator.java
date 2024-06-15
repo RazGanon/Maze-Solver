@@ -24,8 +24,18 @@ public class EmptyMazeGenerator extends AMazeGenerator {
                 mazeMat[i][j] = 0;
             }
         }
-        maze.setStart(new Position(0, 0)); // Start at top-left corner
-        maze.setEnd(new Position(rows - 1, cols - 1)); // End at bottom-right corner
+        // Pick random start and end points using the method from the abstract class
+        Position start = getRandomWallPoint(rows, cols);
+        Position end;
+        do {
+            end = getRandomWallPoint(rows, cols);
+        } while (start.equals(end));
+
+        // Set the start and end positions in the maze
+        maze.setStart(start);
+        maze.setEnd(end);
+        mazeMat[start.getRowIndex()][start.getColumnIndex()] = 0; // Clear the start point
+        mazeMat[end.getRowIndex()][end.getColumnIndex()] = 0; // Clear the end point
 
         // Set the maze matrix
         maze.setMaze(mazeMat);
