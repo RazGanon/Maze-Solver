@@ -2,8 +2,20 @@ package algorithms.search;
 
 import java.util.*;
 
+
+/**
+ * Implements the depth-first search (DFS) algorithm to explore and solve search problems.
+ * DFS uses a stack to manage the nodes during the search, diving deep into one branch before backtracking.
+ */
 public class DepthFirstSearch extends ASearchingAlgorithm {
 
+    /**
+     * Solves the search problem using a depth-first search approach. This method explores as far as possible
+     * along each branch before backtracking.
+     *
+     * @param searchable The search space as an ISearchable object, providing start and goal states and possible states.
+     * @return A Solution object representing the path from start to goal. Returns null if start state is not defined.
+     */
     @Override
     public Solution solve(ISearchable searchable) {
         Stack<AState> stack = new Stack<>();
@@ -11,12 +23,12 @@ public class DepthFirstSearch extends ASearchingAlgorithm {
         AState startState = searchable.getStartState();
         AState goalState = searchable.getGoalState();
 
-        if (startState != null) {
-            stack.add(startState);
-            visited.add(startState);
-        } else {
-            return null;
+        if (startState == null) {
+            return null; // Returns null if no start state is defined
         }
+
+        stack.add(startState);
+        visited.add(startState);
 
         while (!stack.isEmpty()) {
             AState currentState = stack.pop();
@@ -26,7 +38,8 @@ public class DepthFirstSearch extends ASearchingAlgorithm {
                 return backtrack(currentState);
             }
 
-            for (AState neighbor : searchable.getAllPossibleStates(currentState)) {
+            List<AState> neighbors = searchable.getAllPossibleStates(currentState);
+            for (AState neighbor : neighbors) {
                 if (!visited.contains(neighbor)) {
                     neighbor.setParentState(currentState);
                     stack.push(neighbor);
@@ -35,10 +48,10 @@ public class DepthFirstSearch extends ASearchingAlgorithm {
             }
         }
 
-        return new Solution();
+        return new Solution(); // Return an empty solution if no path is found
     }
-
     @Override
     public String getName() {
         return "DepthFirstSearch";
-    }}
+    }
+}

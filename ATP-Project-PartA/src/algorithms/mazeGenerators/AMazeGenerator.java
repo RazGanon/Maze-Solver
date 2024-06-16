@@ -3,22 +3,25 @@ package algorithms.mazeGenerators;
 import java.util.Random;
 
 /**
- * Abstract class for maze generators.
- * Provides a template for generating mazes and measuring the time taken to generate them.
+ * Abstract class for maze generators that provides a template method for generating mazes,
+ * measuring the generation time, and selecting random wall points.
+ * This class is intended to be subclassed by specific maze generation implementations.
  */
 public abstract class AMazeGenerator implements IMazeGenerator {
 
     /**
-     * Generates a maze with the given number of rows and columns.
+     * Generates a maze with the specified number of rows and columns. This method must be
+     * implemented by subclasses to provide specific maze generation algorithms.
      *
      * @param rows The number of rows in the maze.
      * @param cols The number of columns in the maze.
-     * @return The generated maze.
+     * @return The generated maze as a Maze object.
      */
     public abstract Maze generate(int rows, int cols);
 
     /**
-     * Measures the time taken to generate a maze.
+     * Measures the time taken to generate a maze using the generate method. This method
+     * provides a way to benchmark maze generation algorithms implemented by subclasses.
      *
      * @param rows The number of rows in the maze.
      * @param cols The number of columns in the maze.
@@ -26,18 +29,19 @@ public abstract class AMazeGenerator implements IMazeGenerator {
      */
     public long measureAlgorithmTimeMillis(int rows, int cols) {
         long startTime = System.currentTimeMillis();
-        generate(rows, cols);
+        generate(rows, cols);  // Call the abstract generate method that must be implemented by subclasses
         long endTime = System.currentTimeMillis();
         return endTime - startTime;
     }
 
     /**
-     * Generates a random wall point in the maze.
-     * A wall point is a position on one of the outer walls of the maze.
+     * Generates a random wall point, defined as a position located on one of the outer walls
+     * of the maze. This method randomly selects one of the four walls (top, left, bottom, right)
+     * and then selects a random point along that wall.
      *
      * @param rows The number of rows in the maze.
      * @param cols The number of columns in the maze.
-     * @return A random wall point as a Position.
+     * @return A Position object representing a randomly selected wall point.
      */
     protected Position getRandomWallPoint(int rows, int cols) {
         Random random = new Random();

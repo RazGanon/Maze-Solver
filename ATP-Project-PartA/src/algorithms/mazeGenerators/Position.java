@@ -36,6 +36,10 @@ public class Position {
         return column;
     }
 
+    /**
+     * Returns a string representation of the position.
+     * @return A string in the format "{row,column}", representing the current position.
+     */
     @Override
     public String toString() {
         return "{" + row + "," + column + "}";

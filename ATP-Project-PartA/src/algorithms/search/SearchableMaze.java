@@ -2,16 +2,24 @@ package algorithms.search;
 
 import algorithms.mazeGenerators.Maze;
 import algorithms.mazeGenerators.Position;
-
 import java.util.ArrayList;
 
-
-// Define the SearchableMaze class
+/**
+ * Adapts a Maze object to the ISearchable interface to enable search algorithms
+ * to operate on maze structures. This class encapsulates the maze along with its
+ * start and goal states, facilitating the exploration of paths within the maze.
+ */
 public class SearchableMaze implements ISearchable {
     protected Maze maze;
     protected MazeState startState;
     protected MazeState goalState;
 
+    /**
+     * Constructs a SearchableMaze from a given Maze object.
+     * Initializes start and goal states based on the start and end positions provided by the Maze.
+     *
+     * @param maze The Maze object that this SearchableMaze will encapsulate.
+     */
     public SearchableMaze(Maze maze) {
         this.maze = maze;
         Position startPosition = maze.getStart();
@@ -22,16 +30,33 @@ public class SearchableMaze implements ISearchable {
         }
     }
 
+    /**
+     * Returns the start state of the maze as a MazeState.
+     *
+     * @return The start state of the maze.
+     */
     @Override
     public MazeState getStartState() {
         return startState;
     }
 
+    /**
+     * Returns the goal state of the maze as a MazeState.
+     *
+     * @return The goal state of the maze.
+     */
     @Override
     public MazeState getGoalState() {
         return goalState;
     }
 
+    /**
+     * Retrieves all possible states that can be reached from a given state within the maze.
+     * This method checks for walkable adjacent cells (up, down, left, right) from the given state.
+     *
+     * @param s The current state from which to find possible subsequent states.
+     * @return An ArrayList of AState containing all possible states reachable from the given state.
+     */
     @Override
     public ArrayList<AState> getAllPossibleStates(AState s) {
         MazeState mazeState = (MazeState) s;
@@ -52,4 +77,5 @@ public class SearchableMaze implements ISearchable {
         }
 
         return possibleStates;
-    }}
+    }
+}
