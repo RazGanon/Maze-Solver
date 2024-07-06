@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="RunSearchOnMaze">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/out/artifacts/RunSearchOnMaze/RunSearchOnMaze.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
