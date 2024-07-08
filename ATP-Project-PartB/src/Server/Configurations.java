@@ -33,7 +33,7 @@ public class Configurations {
      * @return the property value, or null if the key is not found
      */
     public String getProperty(String name) {
-        try (InputStream input = new FileInputStream("C:/Users/razg1/IdeaProjects/ATP-Project-PartB/resources/config.properties")) {
+        try (InputStream input = new FileInputStream("resources/config.properties")) {
             prop.load(input);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -50,7 +50,7 @@ public class Configurations {
      * @param value the property value
      */
     public void setProperty(String key, String value) {
-        try (OutputStream output = new FileOutputStream("C:/Users/razg1/IdeaProjects/ATP-Project-PartB/resources/config.properties")) {
+        try (OutputStream output = new FileOutputStream("resources/config.properties")) {
             prop.setProperty(key, value);
             prop.store(output, "");
         } catch (FileNotFoundException e) {
