@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="RunCompressDecompressMaze">
+    <output-path>$PROJECT_DIR$/out/artifacts/RunCompressDecompressMaze</output-path>
+    <root id="archive" name="RunCompressDecompressMaze.jar">
+      <element id="module-output" name="ATP-Project-PartB" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/out/artifacts/RunCommunicateWithServers/RunCommunicateWithServers.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/out/artifacts/RunSearchOnMaze/RunSearchOnMaze.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/out/artifacts/RunSearchOnMaze3D/RunSearchOnMaze3D.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

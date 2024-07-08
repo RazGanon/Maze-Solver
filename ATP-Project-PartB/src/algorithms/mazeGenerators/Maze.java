@@ -205,22 +205,6 @@ public class Maze implements Serializable {
         return list;
     }
 
-    /**
-     * Main method for testing the Maze class.
-     *
-     * @param args the command-line arguments
-     */
-    public static void main(String[] args) {
-        IMazeGenerator mg = new MyMazeGenerator();
-        Maze maze = mg.generate(10, 10);
-
-        byte[] list = maze.toByteArray();
-
-        Maze mazi = new Maze(list);
-
-        maze.print();
-        mazi.print();
-    }
 
     // Methods for checking possible neighbors in the maze
     public boolean checkUp(Position s) {

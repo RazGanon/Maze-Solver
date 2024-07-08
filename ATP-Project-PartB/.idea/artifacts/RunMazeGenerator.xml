@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="RunMazeGenerator">
+    <output-path>$PROJECT_DIR$/out/artifacts/RunMazeGenerator</output-path>
+    <root id="archive" name="RunMazeGenerator.jar">
+      <element id="module-output" name="ATP-Project-PartB" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/out/artifacts/RunCommunicateWithServers/RunCommunicateWithServers.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/out/artifacts/RunSearchOnMaze/RunSearchOnMaze.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/out/artifacts/RunSearchOnMaze3D/RunSearchOnMaze3D.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
